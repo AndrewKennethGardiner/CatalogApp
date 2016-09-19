@@ -1,0 +1,34 @@
+<html>
+<!-- This is the page that allows the creation of a new category.
+The client must be logged in.-->
+<head>
+    <!-- Include the standard style sheet and header file. -->
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	{% include "header.html" %}
+</head>
+<!-- The form allows the the creation of a new category.-->   
+<form action="{{url_for('newCategory')}}" method = 'POST'>
+<body>
+<div id="wrap">
+	<div id="sidebar">
+	</div>
+	<div id="main">
+		<!-- The main box provides the blank spaces to create the new category.-->
+		<h2>New Category</h2>
+		<dt>Name:</dt>
+			<dd><input type ='text' size='30' name='name' required></dd>
+		<p></p>
+		<dt>Image - URL/Location:</dt>
+        	<dd><input type ='text' size='40' name='picture'></dd>
+		<p></p>
+		<!-- The category is created or the user cancels.-->
+		<input type='submit' value='Create'>
+		<a href = '{{url_for('catalogList')}}'> Cancel </a>
+	</div>
+	<div id="footer">
+		<!-- In the footer the user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>	
+	</div>
+</div>
+
+</html>

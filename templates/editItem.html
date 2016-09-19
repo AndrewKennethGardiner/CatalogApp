@@ -1,0 +1,52 @@
+<html>
+<!-- This is the page that displays a particular item associated with a category.
+The client is logged in and owns the item.-->
+<head>
+    <!-- Include the standard style sheet and header file. -->
+    <link rel=stylesheet type=text/css href='{{ url_for('static', filename='styles.css') }}'>
+	{% include "header.html" %}
+</head>
+<!-- The form allows the owner of the item to amend it's details.-->   
+<form action= '{{ url_for('editItem',category_name = category_name, item_name =item_name)}}' method = 'post'>
+<body>
+<div id="wrap">
+	<div id="nav2">
+		<!-- The JSON link is included in this page simply to show what it can do.
+		In updated versions the JSON link may dump to a file etc.-->
+		<a href='{{url_for('categoryItemJSON',category_name = category_name, item_name = item_name)}}'>JSON</a>
+	</div>
+	<div id="sidebar">
+		<!-- The side bar provides a link back to the list of categories.-->
+		<a href = '{{url_for('catalogList')}}'><h2>Category</h2></a>
+		<!-- The side bar shows the category name and the image, if any, for the category.-->
+		<h3>{{itemToEdit.category.name}}</h3>
+		<img src= '{{itemToEdit.category.picture}}' alt = 'no image' width="150" height="150">
+	</div>
+	<div id="main">
+		<!-- The main box lists the item that is to be edited.
+		The owner of the item can change the name of the item, the description and the image.-->
+		<h2> Edit Item </h2>
+		<dt>Name:</dt>
+			<dd><input type ='text' size='30' name='name' value = '{{itemToEdit.name}}'></dd>
+		<dt>Description:</dt>
+			<textarea class="form-control" maxlength="250" rows="7" cols = "40" name="description">{{itemToEdit.description}}</textarea>
+		<dt>Image - URL/Location:</dt>
+        	<dd><input type ='text' size='40' name='picture' value = '{{itemToEdit.picture}}'></input></dd>
+        	<img src= '{{itemToEdit.picture}}' alt = 'no image' width="150" height="150">
+		<p></p>
+		<input type='submit' value='Edit'>
+		<a href = '{{url_for('categoryList', category_name = category_name)}}'> Cancel </a>
+		<a href = '{{url_for('deleteItem', category_name = category_name, item_name = itemToEdit.name)}}'> Delete </a>
+	</div>
+	<div id="footer">
+		<!-- In the footer the user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>	
+	</div>
+</div>
+
+</html>
+
+
+
+
+

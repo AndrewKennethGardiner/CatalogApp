@@ -1,0 +1,33 @@
+<html>
+<!-- This is the page that displays a particular category.
+The client is not logged in.-->
+<head>
+    <!-- Include the standard style sheet and header file. -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	{% include "header.html" %}
+</head>
+<body>
+<div id="wrap">
+	<div id="sidebar">
+		<!-- The side bar shows the category name and the image, if any, for the category.-->
+		<a href = '{{url_for('catalogList')}}'><h2>Categories</h2></a>
+		<h3>{{category.name}}</h3>
+		<img src= '{{category.picture}}' alt = 'no image' width="150" height="150">
+	</div>
+	<div id="main">
+		<!-- The main box lists each item associated with the category.
+		A click on the link takes you to that item.
+		As the user is not logged in the create new item link is gone.-->
+		<p></p>
+		<h2>Items in {{category.name}}</h2>
+		{% for i in item %}
+			<a href = '{{url_for('editItem', category_name = category.name, item_name = i.name) }}'><p>{{i.name}}</p></a>
+		{% endfor %}
+	</div>
+	<div id="footer">
+		<!-- In the footer the user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>	
+	</div>
+</div>
+
+</html>

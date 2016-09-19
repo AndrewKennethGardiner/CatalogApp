@@ -1,0 +1,33 @@
+<html>
+<!-- This is the main menu for application.py a Catalog application. 
+The client is not logged in.-->
+<head>
+    <!-- Include the standard style sheet and header file. -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	{% include "header.html" %}
+</head>
+<body>
+<div id="wrap">
+	<div id="sidebar">
+		<!-- In the side bar we list all of the categories.
+		A click on the link sends you to the categoryList function which then opens the category. -->
+		<h2>Categories</h2>
+		{% for c in category %}
+			<a href = '{{url_for('categoryList',  category_name = c.name)}}'><p>{{c.name}}</p></a>
+		{% endfor %}
+	</div>
+	<div id="main">
+		<!-- In the main column we list the latest items. 
+		These items were sent to this page in order of id - so that the latest item added is first.-->
+		<h2>Latest Items Added</h2>
+		{% for i in item %}
+			<p>{{i.name}} ({{i.category.name}})</p>
+		{% endfor %}
+	</div>
+	<div id="footer">
+		<!-- In the footer the non logged in user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>
+	</div>
+</div>
+
+</html>

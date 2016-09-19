@@ -1,0 +1,67 @@
+
+<style>
+/*This is the css file that is called in each of the templates.
+The styles create the boxes and general set out of the web pages.
+Further the headings are sized.
+By using this file the application has a standard feel and any
+amendments to the look and feel need to change in the one file only.*/
+
+h1 { font-size:200%;color: red; }
+h2 { font-size:150%;color: red; }
+h3 { font-size:100%;color: red; }
+
+#wrap {
+	width:750px;
+	background-color:#eeeeee;
+	margin:0 auto;
+	background:#eeeeee;
+}
+#header {
+    background-color:white;
+    color:red;
+    text-align:center;
+    padding:5px
+}
+#nav {
+    background-color:white;
+    color:red;
+    text-align:right;
+    padding:5px;
+}
+#nav2 {
+    background-color:white;
+    color:red;
+    text-align:left;
+    padding:5px;
+}
+#sidebar {
+    line-height:20px;
+    background-color:#eeeeee;
+    height:400px;
+    width:250px;
+    float:left;
+    padding:5px; 
+}
+#main {
+    background-color:#eeeeee;
+    min-height: 400px;
+    width:400px;
+    float:right;
+    padding:10px; 
+    color: blue;
+    text-align: left;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:left;
+    padding:5px;
+}
+#textBox {
+	background-color: white
+	height: 250px;
+	width: 250px;
+	text-align: left;
+}
+</style>

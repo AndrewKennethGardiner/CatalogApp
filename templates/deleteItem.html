@@ -1,0 +1,32 @@
+<html>
+<!-- This is the page that displays a particular item associated with a category.
+The client is logged in and owns the item.-->
+<head>
+	<!-- Include the standard style sheet and header file. -->
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	{% include "header.html" %}
+</head>
+<body>
+<!-- The form allows the owner of the item to delete that item.-->   
+<div id="wrap">
+	<div id="sidebar">
+		<!-- The side bar provides a link back to the list of categories.-->
+		<a href = '{{url_for('catalogList')}}'><h2>Category</h2></a>
+		<!-- The side bar shows the category name and the image, if any, for the category.-->
+		<h3>{{category_name}}</h3>
+		<img src= '{{itemToDelete.category.picture}}' alt = 'no image' width="150" height="150">
+	</div>
+	<div id="main">
+		<!-- The main box asks the question as whether the user really wants to delete the item-->
+		<h2>Are you sure you want to delete {{itemToDelete.name}}?</h2>
+		<form action='{{ url_for('deleteItem',category_name = category_name, item_name=itemToDelete.name)}}' method = 'post'>
+		<input type='submit', value = 'Delete'>
+		<a href = '{{url_for('categoryList', category_name = category_name)}}'> Cancel </a>
+	</div>
+	<div id="footer">
+		<!-- In the footer the user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>	
+	</div>
+</div>
+
+</html>

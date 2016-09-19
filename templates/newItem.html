@@ -1,0 +1,40 @@
+<html>
+<!-- This is the page that allows a logged in user to create a new item.-->
+<head>
+	<!-- Include the standard style sheet and header file. -->
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	{% include "header.html" %}
+</head>
+<!-- The form allows the logged in user to create a new item.-->   
+<form action='{{url_for('newItem', category_name= current_category.name)}}' method = 'POST'>
+<body>
+<div id="wrap">
+	<div id="sidebar">
+		<!-- The side bar provides a link back to the list of categories.-->
+		<a href = '{{url_for('catalogList')}}'><h2>Category</h2></a>
+		<!-- The side bar shows the category name and the image, if any, for the category.-->
+		<h3>{{category_name}}</h3>
+		<img src= '{{current_category.picture}}' alt = 'no image' width="150" height="150">
+	</div>
+	<div id="main">
+		<!-- The main box provides the blank spaces to create the new item.-->
+		<h2>New Item</h2>
+		<dl>
+			<dt>Name:</dt>
+				<dd><input type ='text' size='30' name='name' required></dd>
+    		<dt>Description:</dt>
+        		<dd><textarea name = 'description' maxlength = '250' rows='7' cols='40' required></textarea></dd>
+        	<dt>Image - URL/Location:</dt>
+        		<dd><input type ='text' size='40' name='picture'></dd>
+		</dl>
+		<input type='submit' value='Create'>
+		<!-- A cancelled user goes back to the category list.-->
+		<a href = '{{url_for('categoryList',category_name=current_category.name)}}'> Cancel </a>
+	</div>
+	<div id="footer">
+		<!-- In the footer the user can go home.-->
+		<a href = '{{url_for('catalogList')}}'><h3>Home</h3></a>
+	</div>
+</div>
+
+</html>
